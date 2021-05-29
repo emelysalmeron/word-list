@@ -19,4 +19,4 @@
 
 ## Wireframe
 
-![wireframe](../images/wireframe.png)
+![wireframe](../public/images/wireframe.png)
