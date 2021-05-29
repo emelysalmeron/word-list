@@ -2,7 +2,8 @@
   "name": "word-list",
   "version": "1.0.0",
   "scripts": {
-    "document": "node ./dev-scripts/document.js",
+    "tree": "depcruise --include-only \"^src\" --output-type dot src | graphviz -Tsvg -odocs/dependency-graph.svg",
+    "document": "node ./dev-scripts/document.js && npm run tree",
     "test": "node --experimental-vm-modules node_modules/.bin/jest",
     "test:ci": "node --experimental-vm-modules node_modules/.bin/jest",
     "lint:css": "stylelint",
@@ -23,6 +24,7 @@
   },
   "homepage": "https://github.com/hackyourfuturebelgium/word-list",
   "devDependencies": {
+    "dependency-cruiser": "^10.0.1",
     "eslint": "^7.25.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-config-prettier": "^8.3.0",
@@ -31,6 +33,7 @@
     "eslint-plugin-prefer-arrow": "^1.2.3",
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-spellcheck": "0.0.17",
+    "graphviz-cli": "^1.0.0",
     "jest": "^26.6.3",
     "jsdoc-to-markdown": "^6.0.1",
     "prettier": "^2.2.1",

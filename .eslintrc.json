@@ -68,6 +68,7 @@
         "selector": "ForOfStatement"
       }
     ],
+    "sort-imports": 1,
 
     "prettier/prettier": 1,
 
@@ -103,6 +104,7 @@
     "jsdoc/require-yields-check": 1,
     "jsdoc/valid-types": 1,
 
-    "import/prefer-default-export": 0
+    "import/prefer-default-export": 0,
+    "import/extensions": [1, { "js": "always" }]
   }
 }

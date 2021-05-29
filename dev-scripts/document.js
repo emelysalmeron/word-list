@@ -10,7 +10,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const TITLE = 'DOCS';
 
 const sourceRelativePath = process.argv[2] || '../src';
-const docsRelativePath = process.argv[3] || '../DOCS.md';
+const docsRelativePath = process.argv[3] || '../docs/README.md';
 
 const SOURCE_DIR = path.normalize(path.join(__dirname, sourceRelativePath));
 const DOCS_PATH = path.normalize(path.join(__dirname, docsRelativePath));
@@ -94,28 +94,29 @@ const appendToDocs = async (absolutePath, depth = 1) => {
     const splitAbsPath = subPath.split(path.sep);
     const relativePath = splitAbsPath
       .slice(splitAbsPath.length - (depth + 1), splitAbsPath.length)
-      .join(path.sep);
-    console.log(relativePath);
+      .join('/');
 
-    const docs = jsdocToMarkdown.renderSync({
-      files: subPath,
-      exampleLang: 'js',
-    });
-    console.log(docs);
-    const kindlessDocs = docs.replace(/\*\*Kind[^\n]+/g, '');
-    newDocs +=
-      // '\n\n---\n\n' +
-      '\n\n' +
-      `${headerLevel}## [./${relativePath}](./${relativePath})\n\n` +
-      kindlessDocs;
-
-    newToc += `\n${indent}- [${nextPath}](#${relativePath
+    const anchorId = relativePath
       .split(' ')
       .join('')
       .split('.')
       .join('')
       .split('/')
-      .join('')})`;
+      .join('');
+
+    newToc += `\n${indent}- [${nextPath}](#${anchorId})`;
+
+    const docs = jsdocToMarkdown.renderSync({
+      files: subPath,
+      exampleLang: 'js',
+    });
+    const kindlessDocs = docs.replace(/\*\*Kind[^\n]+/g, '\n');
+    newDocs +=
+      // '\n\n---\n\n' +
+      '\n\n' +
+      `<details><summary><a href="../${relativePath}" id="${anchorId}">${relativePath}</a></summary>\n\n` +
+      kindlessDocs +
+      '</details>';
   }
 };
 
@@ -131,12 +132,19 @@ appendToDocs(SOURCE_DIR).then((_) => {
     ? oldReadme.replace(tocRegex, tocReplacer)
     : `${tocReplacer}\n\n${oldReadme}`;
 
+  const treeRegex =
+    /(<!--[ \t]*BEGIN TREE[ \t]*-->)([\s\S]*)(<!--[ \t]*END TREE[ \t]*-->)/;
+  const treeReplacer = `<!-- BEGIN TREE -->\n\n![dependency graph](./dependency-graph.svg)\n\n<!-- END TREE -->`;
+  const treedReadme = tocedReadme.match(treeRegex)
+    ? tocedReadme.replace(treeRegex, treeReplacer)
+    : `${treeReplacer}\n\n${tocedReadme}`;
+
   const titleRegex =
     /(<!--[ \t]*BEGIN TITLE[ \t]*-->)([\s\S]*)(<!--[ \t]*END TITLE[ \t]*-->)/;
   const titleReplacer = `<!-- BEGIN TITLE -->\n# ${TITLE}\n\n<!-- END TITLE -->`;
-  const titledReadme = tocedReadme.match(titleRegex)
-    ? tocedReadme.replace(titleRegex, titleReplacer)
-    : `${titleReplacer}\n\n${tocedReadme}`;
+  const titledReadme = treedReadme.match(titleRegex)
+    ? treedReadme.replace(titleRegex, titleReplacer)
+    : `${titleReplacer}\n\n${treedReadme}`;
 
   const docsRegex =
     /(<!--[ \t]*BEGIN DOCS[ \t]*-->)([\s\S]*)(<!--[ \t]*END DOCS[ \t]*-->)/;

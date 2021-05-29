@@ -4,6 +4,12 @@
 
 <!-- END TITLE -->
 
+<!-- BEGIN TREE -->
+
+![dependency graph](./dependency-graph.svg)
+
+<!-- END TREE -->
+
 <!-- BEGIN TOC -->
 
 - handlers
@@ -29,7 +35,7 @@
 
 # /handlers
 
-### [./src/handlers/input-word.js](./src/handlers/input-word.js)
+<details><summary><a href="../src/handlers/input-word.js" id="srchandlersinput-wordjs">src/handlers/input-word.js</a></summary>
 
 <a name="handleInputWord"></a>
 
@@ -42,7 +48,9 @@ It is called each time the user clicks the "add word" button.
 | ----- | ------------------ | ---------------------------------------------------- |
 | event | <code>Event</code> | The event triggered when the user clicks the button. |
 
-### [./src/handlers/sort-words.js](./src/handlers/sort-words.js)
+</details>
+
+<details><summary><a href="../src/handlers/sort-words.js" id="srchandlerssort-wordsjs">src/handlers/sort-words.js</a></summary>
 
 <a name="handleSortWords"></a>
 
@@ -55,6 +63,8 @@ It is called each time the input selection changes.
 | ----- | ------------------ | ------------------------------------------ |
 | event | <code>Event</code> | The event triggered by changing the input. |
 
+</details>
+
 ---
 
 [TOP](#DOCS)
@@ -63,7 +73,9 @@ It is called each time the input selection changes.
 
 # /init
 
-### [./src/init/index.js](./src/init/index.js)
+<details><summary><a href="../src/init/index.js" id="srcinitindexjs">src/init/index.js</a></summary>
+
+</details>
 
 ---
 
@@ -73,9 +85,13 @@ It is called each time the input selection changes.
 
 # /listeners
 
-### [./src/listeners/input-word.js](./src/listeners/input-word.js)
+<details><summary><a href="../src/listeners/input-word.js" id="srclistenersinput-wordjs">src/listeners/input-word.js</a></summary>
 
-### [./src/listeners/sort-words.js](./src/listeners/sort-words.js)
+</details>
+
+<details><summary><a href="../src/listeners/sort-words.js" id="srclistenerssort-wordsjs">src/listeners/sort-words.js</a></summary>
+
+</details>
 
 ---
 
@@ -85,7 +101,7 @@ It is called each time the input selection changes.
 
 # /logic
 
-### [./src/logic/is-word.js](./src/logic/is-word.js)
+<details><summary><a href="../src/logic/is-word.js" id="srclogicis-wordjs">src/logic/is-word.js</a></summary>
 
 <a name="isWord"></a>
 
@@ -99,7 +115,15 @@ Checks if a string is a word. A word contains only letters.
 | ----- | ------------------- | -------------------------------- |
 | text  | <code>string</code> | A string to check for wordiness. |
 
-### [./src/logic/sort-strings.js](./src/logic/sort-strings.js)
+**Example**
+
+```js
+// ... write this!
+```
+
+</details>
+
+<details><summary><a href="../src/logic/sort-strings.js" id="srclogicsort-stringsjs">src/logic/sort-strings.js</a></summary>
 
 <a name="sortStrings"></a>
 
@@ -115,6 +139,14 @@ It does not modify the argument (no side-effects).
 | [toSort]   | <code>Array.&lt;string&gt;</code> | <code>&#x27;&#x27;</code>                   | The array of strings to sort.                                                                                                                                                                                                                                                                                    |
 | [sortType] | <code>string</code>               | <code>&quot;&#x27;oldest&#x27;&quot;</code> | How to sort the strings, 6 options. - oldest: from oldest to newest - newest: from newest to oldest - shortest: from shortest to longest - longest: from longest to shortest - a: alphabetical order - z: reverse alphabetical order if the sortType is not one of these 6 options, a copy of toSort is returned |
 
+**Example**
+
+```js
+// ... write this!
+```
+
+</details>
+
 ---
 
 [TOP](#DOCS)
@@ -123,7 +155,7 @@ It does not modify the argument (no side-effects).
 
 # /procedures
 
-### [./src/procedures/update-list.js](./src/procedures/update-list.js)
+<details><summary><a href="../src/procedures/update-list.js" id="srcproceduresupdate-listjs">src/procedures/update-list.js</a></summary>
 
 <a name="updateList"></a>
 
@@ -135,11 +167,13 @@ Renders an array of strings as an unordered list into the #list-container elemen
 | ---------- | --------------------------------- | --------------- | ----------------------------------------- |
 | [toRender] | <code>Array.&lt;string&gt;</code> | <code>[]</code> | an array of strings to render into the UI |
 
+</details>
+
 ---
 
 [TOP](#DOCS)
 
-## [./src/data.js](./src/data.js)
+<details><summary><a href="../src/data.js" id="srcdatajs">src/data.js</a></summary>
 
 <a name="data"></a>
 
@@ -151,5 +185,7 @@ Renders an array of strings as an unordered list into the #list-container elemen
 | ----- | --------------------------------- | ------------------------------------------------------------------- |
 | words | <code>Array.&lt;string&gt;</code> | An array of words that the user has provided.                       |
 | sort  | <code>string</code>               | A string indicating the order string should be displayed in the UI. |
+
+</details>
 
 <!-- END DOCS -->
