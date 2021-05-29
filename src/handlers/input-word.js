@@ -22,8 +22,6 @@ export const handleInputWord = (event) => {
   }
 
   /* -- gather user input from DOM -- */
-  const text = event.target.form.text.value;
-  const action = event.target.value;
 
   /* -- use the input and data to implement the user story --
 
@@ -44,8 +42,8 @@ export const handleInputWord = (event) => {
 
   // ... write some code ...
 
-  saveWords = (value) => [words.push(value)];
-
+  const text = event.target.form.text.value;
+  const action = event.target.value;
   sortType = (value) => {
     switch (value) {
       case "a -> z":
@@ -59,24 +57,33 @@ export const handleInputWord = (event) => {
           words.sort().reverse();
         }
         break;
-      case "old -> new": {
-        words; // normal behavior with push
-      }
-      break;
 
-      case 'new -> old':{
-        words.reverse(); //same as before but reverse
-      }
-      break;
+      case "old -> new":
+        {
+          words;
+          //Here just just print cause its normal behavior with the push
+        }
+        break;
 
-      case "short -> long":{
-        words.sort((a,b) => a-b):
-      }
-      break
-      case "long -> short": {
-        words.sort((a,b) => b-a);
-      }
-      break
+      case "new -> old":
+        {
+          words.reverse();
+          //Here just just print cause its normal behavior with the push
+          // in vice-versa
+        }
+        break;
+
+      case "short -> long":
+        {
+          words.sort((a, b) => a - b);
+        }
+        break;
+
+      case "long -> short":
+        {
+          words.sort((a, b) => b - a);
+        }
+        break;
     }
   };
 
