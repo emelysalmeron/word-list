@@ -1,9 +1,9 @@
-import { data } from '../data.js';
-import { isWord } from '../logic/is-word.js';
-import { sortStrings } from '../logic/sort-strings.js';
-import { updateList } from '../procedures/update-list.js';
+import { data } from "../data.js";
+import { isWord } from "../logic/is-word.js";
+import { sortStrings } from "../logic/sort-strings.js";
+import { updateList } from "../procedures/update-list.js";
 
-const warnings = document.getElementById('warnings');
+const warnings = document.getElementById("warnings");
 
 /**
  * Entry point for users adding a word to the list.
@@ -14,10 +14,10 @@ const warnings = document.getElementById('warnings');
 export const handleInputWord = (event) => {
   /* -- entry point for adding or removing a word -- */
   // debugger;
-  console.log('-- handler: input word --');
+  console.log("-- handler: input word --");
 
   /* -- check the target -- */
-  if (event.target.type !== 'button') {
+  if (event.target.type !== "button") {
     return;
   }
 
@@ -43,6 +43,42 @@ export const handleInputWord = (event) => {
   */
 
   // ... write some code ...
+
+  saveWords = (value) => [words.push(value)];
+
+  sortType = (value) => {
+    switch (value) {
+      case "a -> z":
+        {
+          words.sort();
+        }
+        break;
+
+      case "z -> a":
+        {
+          words.sort().reverse();
+        }
+        break;
+      case "old -> new": {
+        words; // normal behavior with push
+      }
+      break;
+
+      case 'new -> old':{
+        words.reverse(); //same as before but reverse
+      }
+      break;
+
+      case "short -> long":{
+        words.sort((a,b) => a-b):
+      }
+      break
+      case "long -> short": {
+        words.sort((a,b) => b-a);
+      }
+      break
+    }
+  };
 
   /* -- render new words -- */
   const sorted = sortStrings(data.words, data.sort);

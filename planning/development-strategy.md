@@ -16,3 +16,7 @@
   it will take some time and practice to get used to this
 
 -->
+
+## Wireframe
+
+![wireframe](../images/wireframe.png)
