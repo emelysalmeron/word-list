@@ -11,6 +11,7 @@ import { renderList } from '../components/render-list.js';
 export const sortWords = (event) => {
   /* -- entry point for sorting the words -- */
   // debugger;
+  console.log('-- handler: sort words --');
 
   /* -- gather user input from DOM -- */
   const howToSort = event.target.value;
@@ -25,6 +26,7 @@ export const sortWords = (event) => {
 
   /* -- render new words -- */
   const newList = renderList(sorted);
+  const sorted = sortStrings(data.words, howToSort);
 
   const listContainer = document.getElementById('list-container');
   listContainer.innerHTML = '';

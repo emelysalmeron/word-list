@@ -3,6 +3,7 @@ import { isWord } from '../logic/is-word.js';
 import { sortStrings } from '../logic/sort-strings.js';
 import { renderList } from '../components/render-list.js';
 
+const warnings = document.getElementById('warnings');
 /**
  * Entry point for users adding a word to the list.
  * It is called each time the user clicks the "add word" button.
@@ -12,6 +13,7 @@ import { renderList } from '../components/render-list.js';
 export const inputWord = (event) => {
   /* -- entry point for adding or removing a word -- */
   // debugger;
+  console.log('-- handler: input word --');
 
   /* -- check the target -- */
   if (event.target.type !== 'button') {
@@ -43,9 +45,17 @@ export const inputWord = (event) => {
   warnings.innerText = '';
 
   if (action === 'add') {
-    // ... write some code ...
+    if (!isWord(text)) {
+      warnings.innerHTML = `Your input "${text}" must include one word at the time and only letters`;
+      return;
+    }
+    data.words.push(text);
   } else if (action === 'remove') {
-    // ... write some code ...
+    if (!data.words.includes(text)) {
+      warnings.innerHTML = `"${text}" is not found in the list`;
+      return;
+    }
+    data.words.splice(data.words.indexOf(text), 1);
   }
 
   /* -- render new words -- */

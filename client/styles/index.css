@@ -1,1 +1,23 @@
 @import url('./other-file.css');
+
+.warning {
+  color: red;
+}
+
+.title {
+  text-align: center;
+  color: #165b77;
+  font-family: 'Lucida Console';
+  border-top-color: #32a1ce;
+}
+
+.container {
+  text-align: center;
+  list-style: inside;
+  list-style-type: disc;
+  font-family: 'Lucida Console';
+}
+
+.container li {
+  list-style: none;
+}

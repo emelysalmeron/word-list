@@ -16,4 +16,20 @@
  *
  * // ... write this!
  */
-export const sortStrings = () => {};
+export const sortStrings = (toSort = [], sortType = 'oldest') => {
+  let sorted = [];
+
+  sorted =
+    sortType === 'newest'
+      ? [...toSort].reverse()
+      : sortType === 'a'
+      ? [...toSort].sort()
+      : sortType === 'z'
+      ? [...toSort].sort().reverse()
+      : sortType === 'shortest'
+      ? [...toSort].sort((a, b) => a.length - b.length)
+      : sortType === 'longest'
+      ? [...toSort].sort((a, b) => a.length - b.length).reverse()
+      : [...toSort];
+  return sorted;
+};

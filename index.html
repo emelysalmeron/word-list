@@ -1,16 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="./client/public/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title></title>
 
-    <link href="./client/styles/index.css" rel="stylesheet" />
-  </head>
-  <body>
-    <div id="root"></div>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="./client/public/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Word-list</title>
+  <link href="./client/styles/index.css" rel="stylesheet" />
+</head>
 
-    <script type="module" src="./client/src/init/index.js"></script>
-  </body>
+<body>
+  <header>
+    <h1 class="title">Word-list</h1>
+  </header>
+  <div id="root" class="container">
+    <form id="input-form">
+      <input name="text" placeholder="new word" />
+      <input type="button" value="add" />
+      <input type="button" value="remove" />
+    </form>
+    <br />
+    <code id="warnings" class="warning"></code>
+    <br />
+    <label for=".sort">sort list by:</label>
+    <select id="sort-type" class="sort">
+      <option value="oldest">old -> new</option>
+      <option value="newest">new -> old</option>
+      <option value="a">a -> z</option>
+      <option value="z">z -> a</option>
+      <option value="shortest">short -> long</option>
+      <option value="longest">long -> short</option>
+    </select>
+    <div id="list-container"></div>
+  </div>
+
+  <script type="module" src="./client/src/init/index.js"></script>
+</body>
+
 </html>

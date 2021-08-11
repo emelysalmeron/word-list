@@ -48,6 +48,17 @@
 
 <details><summary><a href="../../client/src/components/render-list.js" id="clientsrccomponentsrender-listjs">../client/src/components/render-list.js</a></summary>
 
+<a name="renderList"></a>
+
+## renderList ⇒
+
+Renders an array of strings as an order list into.
+
+- @param {string[]} =[toRender=[]].
+- @param toRender
+
+**Returns**: ulEL
+
 </details>
 
 ---
